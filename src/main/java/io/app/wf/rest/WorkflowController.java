@@ -14,16 +14,18 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 @RestController
 public class WorkflowController {
-    private WorkflowServices workflowServices;
+  private WorkflowServices workflowServices;
 
-    @GetMapping("/create")
-    public ResponseEntity<String> createTrasaction() {
-        return new ResponseEntity<>(workflowServices.createTransaction(), HttpStatus.CREATED);
-    }
+  @GetMapping("/create")
+  public ResponseEntity<String> createTrasaction() {
+    return new ResponseEntity<>(workflowServices.createTransaction(), HttpStatus.CREATED);
+  }
 
-    @PostMapping("/update-status")
-    public ResponseEntity<WfStatusModel> updateStatus(@RequestBody JsonNode payload) {
-        return new ResponseEntity<>(workflowServices.updateStatus(payload.get("status").asText(),
-                payload.get("workflowId").asText()), HttpStatus.CREATED);
-    }
+  @PostMapping("/update-status")
+  public ResponseEntity<WfStatusModel> updateStatus(@RequestBody JsonNode payload) {
+    return new ResponseEntity<>(
+        workflowServices.updateStatus(
+            payload.get("status").asText(), payload.get("workflowId").asText()),
+        HttpStatus.CREATED);
+  }
 }

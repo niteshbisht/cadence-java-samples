@@ -11,15 +11,16 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class WorkflowServices {
 
-    private final WorkflowClient workflowClient;
+  private final WorkflowClient workflowClient;
 
-    public String createTransaction() {
-        WorkflowExecution start = WorkflowClient.start(BpmWorkflowImpl::createTransaction, null);
-        return start.getWorkflowId();
-    }
+  public String createTransaction() {
+    WorkflowExecution start = WorkflowClient.start(BpmWorkflowImpl::createTransaction, null);
+    return start.getWorkflowId();
+  }
 
-    public WfStatusModel updateStatus(String status, String workflowId) {
-        BpmWorkflowImpl bpmWorkflow = workflowClient.newWorkflowStub(BpmWorkflowImpl.class, workflowId);
-        return bpmWorkflow.updateState(status, false);
-    }
+  public WfStatusModel updateStatus(String status, String workflowId) {
+    BpmWorkflowImpl bpmWorkflow = workflowClient.newWorkflowStub(BpmWorkflowImpl.class, workflowId);
+    bpmWorkflow.updateState(status, false);
+    return bpmWorkflow.getStatus();
+  }
 }
