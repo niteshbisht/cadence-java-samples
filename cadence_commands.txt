@@ -1,0 +1,6 @@
+docker exec -it cadence_cadence_1 /bin/bash
+docker run --network=host --rm ubercadence/cli:master --do test-domain domain register -rd 1
+docker run --network=host --rm ubercadence/cli:master --do test-domain domain describe
+
+cadence --ad $(hostname -i):7933 --domain test-domain workflow listall --open
+cadence --ad $(hostname -i):7933 --domain test-domain workflow listall

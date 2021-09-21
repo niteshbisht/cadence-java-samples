@@ -1,0 +1,7 @@
+docker inspect cadence_cassandra_1
+docker system prune -a
+docker images -f dangling=true
+docker images -f
+docker images
+docker ps -a
+docker ps -a -f status=exited

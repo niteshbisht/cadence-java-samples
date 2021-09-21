@@ -17,8 +17,8 @@ public class WorkflowController {
   private WorkflowServices workflowServices;
 
   @GetMapping("/create")
-  public ResponseEntity<String> createTrasaction() {
-    return new ResponseEntity<>(workflowServices.createTransaction(), HttpStatus.CREATED);
+  public ResponseEntity<String> createTrasaction(@RequestBody String taskMessage) {
+    return new ResponseEntity<>(workflowServices.createTransaction(taskMessage), HttpStatus.CREATED);
   }
 
   @PostMapping("/update-status")

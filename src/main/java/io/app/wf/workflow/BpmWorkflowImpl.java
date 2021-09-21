@@ -5,6 +5,7 @@ import io.app.wf.activities.BpmActivitiesImpl;
 import io.app.wf.model.WfStatusModel;
 
 public class BpmWorkflowImpl implements BpmWorkflow {
+  private String taskMessage;
   private String status;
   private boolean initialized;
   private WfStatusModel wfStatusModel;

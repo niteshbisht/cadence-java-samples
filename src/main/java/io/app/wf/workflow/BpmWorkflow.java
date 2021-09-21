@@ -7,7 +7,7 @@ import io.app.wf.common.CommonConstants;
 import io.app.wf.model.WfStatusModel;
 
 public interface BpmWorkflow {
-  @WorkflowMethod(taskList = CommonConstants.TASK_LIST)
+  @WorkflowMethod(taskList = CommonConstants.TASK_LIST, executionStartToCloseTimeoutSeconds = 3600)
   public void createTransaction();
 
   @SignalMethod
